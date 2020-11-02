@@ -23,9 +23,9 @@ const rl = readline.createInterface({
 // })
 
 // 【readline版实现】
-rl.question('请输入当前的年份和月份，然后按回车键。eg: 202010. ', (month) => {
+rl.question('请输入当前的年份和月份，然后按回车键。eg: 202010    ', (month) => {
 
-  rl.question('请输入本月小结会的月份和日期，然后按回车键。eg: 1130. ', (date) => {
+  rl.question('请输入本月小结会的月份和日期，然后按回车键。eg: 1130    ', (date) => {
     console.log('数据统计中, 请勿触碰键盘...');
     app(month, date);
     
