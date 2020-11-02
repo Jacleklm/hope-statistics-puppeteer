@@ -1,7 +1,8 @@
 /*
 *  formatRes(logs, notes, summarys, date, endDate) 格式化结果
 *  
-*  logs: {
+*  logs: Object. 示例: 
+*  {
 *    '陈俊嘉': 4,
 *    '王东颖': 20,
 *    '王婕': 3
@@ -10,7 +11,7 @@
 *  summarys: string[]. eg: [ '陈俊嘉', '林胤达', '王东颖' ]
 *  date, endDate 同 getTask
 *  
-*  返回一个对象，记录统计结果:
+*  返回一个对象，记录统计结果. 示例:
 *  {
 *    title: '本月日常总结',
 *    frontEnd: {

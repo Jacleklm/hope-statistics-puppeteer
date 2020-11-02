@@ -28,7 +28,9 @@ const app = async(date, endDate) => {
     encoding: 'utf8'
   }, err => {
     if (err) throw err
-    console.log('统计完成！请输入 exit 或直接 ctrl + C 退出程序。统计结果见 output 文件夹下的 result.json 文件!')
+    console.log('统计完成！统计结果见 output 文件夹下的 result.json 文件! 欢迎下次使用, Goodbye 👋')
+    
+    process.exit()
   })
 }
 

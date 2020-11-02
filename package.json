@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index"
+    "start": "node src/index -l"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Jacleklm/hope-statistics-puppeteer#readme",
   "dependencies": {
     "axios": "^0.21.0",
+    "commander": "^6.2.0",
+    "prompt": "^1.0.0",
     "puppeteer": "^5.4.1"
   }
 }
