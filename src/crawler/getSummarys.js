@@ -14,7 +14,7 @@ const getSummarys = async (date) => {
   // 初始化爬虫，打开对应的页面
   const page = await initPage(summaryUrl);
   const _dateStr = String(date);
-  const dateStr = `${_dateStr.slice(0, 4)}年${Number(_dateStr.slice(3))}月`;
+  const dateStr = `${_dateStr.slice(0, 4)}年${Number(_dateStr.slice(4))}月`;
 
   let sumResult = await page.$$eval('.hope_list_item_content', (sumItemList) => {
     return Array.prototype.map.call(sumItemList, sumItem => {

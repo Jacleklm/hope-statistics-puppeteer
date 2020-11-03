@@ -21,7 +21,6 @@ output_resource
 
 # output
 .build_temp
-output
 output_resource
 
 # yarn
