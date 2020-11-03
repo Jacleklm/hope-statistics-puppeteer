@@ -16,17 +16,17 @@ const getSummarys = async (date) => {
   const _dateStr = String(date);
   const dateStr = `${_dateStr.slice(0, 4)}年${Number(_dateStr.slice(4))}月`;
 
-  let sumResult = await page.$$eval('.hope_list_item_content', (sumItemList) => {
+  let sumResult = await page.$$eval('.hope_list_item_content', (sumItemList, dateStr) => {
     return Array.prototype.map.call(sumItemList, sumItem => {
       if (sumItem.innerHTML.startsWith(dateStr)) {
         const peopleHasSum = sumItem.innerHTML.slice(sumItem.innerHTML.length - 3); // 返回指定月份有些小结的成员的人名
         return peopleHasSum;
       }
     })
-  })
+  }, dateStr)
   sumResult = sumResult.filter(i => i && i)
   
-  console.log('getSummarys finish', sumResult)
+  console.log('每月小结统计完成', sumResult)
   return sumResult
 };
 

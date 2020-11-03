@@ -1,3 +1,11 @@
+/*
+*  getLogs(date) 获取当月有写学习日志的成员极其日志数
+*  
+*  date: number. 当前年月. eg: 202010
+*  
+*  返回示例:
+*  { '陈俊嘉': 3 }
+*/
 const puppeteer = require('puppeteer');
 const { logsUrl } = require('../const/pageUrl');
 const { initPage } = require('../utils');
@@ -13,21 +21,24 @@ const getLogs = async (date) => {
   let logRes = {};
   let islogCollectFinish = false;
   let logPerson = []
+  let time = 0;
 
   const getSinglePageLog = async () => {
+
     // 完成这个页面的收集
-    const singlePageLog = await page.$$eval('.internal_box_left_dairylist_li', (logLiList) => {
+    const singlePageLog = await page.$$eval('.internal_box_left_dairylist_li', (logLiList, dateStr) => {
+      // page.$$eval 是浏览器中执行的函数，其中的 console.log 不能在我们的控制台中打印出来
       return Array.prototype.map.call(logLiList, logLi => {
         const logDateStr = logLi.querySelector('.dairylist_time').innerHTML.slice(0, 7);
         if (logDateStr === dateStr) {
           const personName = logLi.querySelector('p > strong').innerHTML
         } else {
-          console.log('页面不符的目标日期logDateStr', logDateStr)
-          console.log('收集的目标日期dateStr', dateStr)
           islogCollectFinish = true;
         }
       })
-    })
+
+    // page.$$eval 的第三个及之后的参数是传递给 pageFunc 的参数。见 https://github.com/puppeteer/puppeteer/blob/v5.4.1/docs/api.md#pageevalselector-pagefunction-args,  https://qastack.cn/programming/46088351/puppeteer-pass-variable-in-evaluate
+    }, dateStr)
     logPerson.push(...singlePageLog);
 
     // 判断要不要点下一页
@@ -35,6 +46,7 @@ const getLogs = async (date) => {
       await page.click('.inputPager_page > .p_next')
       page.on('load', async () => {
         await getSinglePageLog();
+        time++
       });
     }
   }
@@ -42,6 +54,8 @@ const getLogs = async (date) => {
   await getSinglePageLog();
 
   console.log('logPerson', logPerson);
+  console.log('islogCollectFinish', islogCollectFinish);
+  console.log('time', time)
   logPerson.forEach(person => {
     if (!logRes[person]) {
       logRes[person] = 1;
@@ -50,7 +64,7 @@ const getLogs = async (date) => {
     }
   })
   
-  console.log('getLogs finish', logRes)
+  console.log('日志统计完成', logRes)
   // return logRes
 };
 
