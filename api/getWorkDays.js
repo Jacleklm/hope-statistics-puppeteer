@@ -1,5 +1,5 @@
 // 获取当月有多少天法定工作日，用于判断当月应该写几篇小结几篇日志
-// 可调用免费API http://tool.bitefu.net/jiari/ 接口文档 https://www.kancloud.cn/xiaoggvip/holiday_free/1606802
+// 可调用免费API，接口文档 https://www.kancloud.cn/xiaoggvip/holiday_free/1606802
 // 深入解析Node.js中5种发起HTTP请求的方法 https://segmentfault.com/a/1190000010698468
 
 const http = require('http');
