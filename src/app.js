@@ -5,21 +5,9 @@ const getNotes = require('./crawler/getNotes');
 const getSummarys = require('./crawler/getSummarys');
 
 const app = async(date, endDate) => {
-  // const logs = await getLogs(date);
-  // const notes = await getNotes(date);
+  const logs = await getLogs(date);
+  const notes = await getNotes(date);
   const summarys = await getSummarys(date);
-
-  // mock
-  const logs = {
-    '陈俊嘉': 4,
-    '王东颖': 20,
-    '王婕': 3
-  }
-  const notes = {
-    '陈俊嘉': 3,
-    '王东颖': 1,
-    '王婕': 2
-  }
 
   const result = await formatRes(logs, notes, summarys, date, endDate);
   const resultJson = JSON.stringify(result, null, 2)

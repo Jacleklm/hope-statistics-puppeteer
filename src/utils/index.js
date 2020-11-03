@@ -43,7 +43,7 @@ const getTask = async(date, endDate) => {
     summaryNum: 1
   };
 
-  console.log('getTask finish', result);
+  console.log('获取当月任务完成', result);
   return result;
 };
 

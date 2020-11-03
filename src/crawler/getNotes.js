@@ -41,7 +41,7 @@ const getGroupNotes = async(date, gruopName, noteList) => {
   noteList.push(...groupNoteResult);
 };
 
-// 爬取整个工作室的学习笔记
+// 爬取整个工作室的学习笔记，不过需要在 src/const/pageUrl.js 的 noteUrl 中更新各个组的学习笔记 url，目前是不完整的；并且需要在src/const/people.js 中更新各个组的成员名单，目前只有前端组的
 const getNotes = async(date) => {
   const noteRes = {};
   const noteList = [];

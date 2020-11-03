@@ -81,17 +81,17 @@ const formatRes = async(logs, notes, summarys, date, endDate) => {
 
     groupLogs = `${groupLogs} / ${task.logsNum * groupPeoNum}`;
     groupNotes = `${groupNotes} / ${task.notesNum * groupPeoNum}`;
-    groupPeoNum = `${groupPeoNum} / ${task.summaryNum * groupPeoNum}`;
+    groupSums = `${groupSums} / ${task.summaryNum * groupPeoNum}`;
 
     groupSum = {
       logs: groupLogs,
       notes: groupNotes,
-      summary: groupPeoNum
+      summary: groupSums
     }
 
     result[group] = {
-      sum: groupSum,
-      detail: groupDetail
+      '小组共计': groupSum,
+      '每人详情': groupDetail
     };
   })  
 
