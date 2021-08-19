@@ -7,7 +7,7 @@ PS: 请在中大内网环境下使用
 
 ```bash
 # 拷贝项目到本地
-git clone git@github.com:Jacleklm/hope-statistics-puppeteer.git
+git clone git@github.com:Jacleklm/hope-statistics-puppeteer.git 
 # 定位到文件夹
 cd hope-statistics-puppeteer
 # 安装依赖
